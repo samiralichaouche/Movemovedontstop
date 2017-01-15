@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Move Move,Don't Stop!</title>
+    <script type="text/javascript" src="js/scroll.js"></script>
+    <link rel="stylesheet" type="text/css" href="motioncap/motion-detection-in-javascript-api/styles/main.css" media="all">
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <script>
+        class Timer {
+            constructor(startTime) { 
+            this.elapsed = startTime;
+            this.increment = 1;
+        }
+
+        start(){
+            if (this.increment == 0 ){
+            this.increment = 1;
+            }
+        }
+
+        pause(){
+            this.increment = 0;
+        }
+
+        }
+    </script>
+</head>
+<body id="grad">
+
+  <div id="div1" class="contentbox">
+    <div class="top"><h1 class="text-center" id="title">Move,Move,Don't Stop!</h1></div>
+    <p id="mainText">Our application is Move, Move, Don't Stop. It is a web-based Motion Detection Application that helps motivate the user to complete an exercise routine by linking movement with music. When the user is actively moving in front of their web cam, our application will detect the movement and will play music. As soon as no motion is detected, the music will pause and the user's exercise routine will be put on hold. Our goal is to help motivate the user to finish the exercises by gamifying this process and the user's goal is to keep the music playing the entire duration of the routine.</p>
+    <center><img src="https://s29.postimg.org/sekykpeh3/hackuci_banner.png" height="200" width="400"></img></center>
+    <div id="icon">
+    <a href="#" onclick="return false;" onmousedown="autoScrollTo('div2');"><img style="height:80px; width:80px;" src="icons/noun_318.png"></a>
+    </div>
+  </div>
+
+
+
+    <script src="js/motioncapture/motioncap.js"></script> 
+    <div id="div2" class="container contentbox">    
+        <div class="clock-wrap">
+          <div id="clockdiv">
+            <div>
+              <span class="seconds"></span>
+              <div class="smalltext">Seconds</div>
+            </div>
+          </div>
+        </div>
+
+        <!--
+        <div class="vid">
+            <div><video id="video" autoplay></video></div>
+            <div class="btn btn-block btn-primary">Start</div>
+            <button type="button" class="btn btn-block btn-primary" onclick="initializeClock('clockdiv')"> Start Here </button>
+        </div>
+        -->
+
+
+
+        <!-- MOTION CAPTURE API THAT WE WILL BE USING -->
+    <div class="vid">
+        <video id="webCamWindow" autoplay></video>
+        <div id="movement"></div>
+        
+        <script type="text/javascript" src="motioncap/motion-detection-in-javascript-api/js/global.js"></script>
+        <script type="text/javascript" src="motioncap/motion-detection-in-javascript-api/js/MotionDetector/WebCamCapture.js"></script>
+        <script type="text/javascript" src="motioncap/motion-detection-in-javascript-api/js/MotionDetector/ImageCompare.js"></script>
+        <script type="text/javascript" src="motioncap/motion-detection-in-javascript-api/js/MotionDetector/Core.js"></script>
+        <script type="text/javascript" src="motioncap/motion-detection-in-javascript-api/js/main.js"></script>
+                <div class="row">
+                    <button type="button" class="btn btn-primary col-md-6" onclick="initializeClock('clockdiv'); audio.play()">Start</button>
+                    <button type="button" class="btn btn-danger col-md-6" id = "pauseButton">Pause</button>
+                </div>
+    </div>
+        <!-- PICTURE GOES HERE-->
+        <div class="content">
+            <image id="exercise_image" style="width: 400px;height: 300px;"></image>
+        </div>
+            <input type=file id = "file_chooser"></input>
+        <div id="mp3_player">
+        <div id="audio_box"></div>
+        <canvas id="analyser_render"></canvas>
+        </div>
+    </div>
+
+    <script src="js/countdown/countdown.js"></script> 
+    <script src="js/AudioPlayer.js"></script>
+    <script> 
+            document.getElementById("pauseButton").onclick = function(){
+                audio.pause();
+                timer1.pause();
+            };
+
+            setInterval(function(){
+                if (!musicShouldBePlaying){
+                    audio.pause();
+                } else {
+                    audio.play()
+                }
+
+            }, 5000);
+
+    </script>
+</body>
+</html>
